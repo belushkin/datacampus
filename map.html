@@ -41,7 +41,7 @@
       display: block;
     }
 		#clustered-map-inner-info {
-			height: 70px;
+			height: 90px;
 			margin-left: 2rem;
 		}
 		#clustered-map-inner-filters {
@@ -202,14 +202,15 @@
     type="text/javascript"
     src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"
   ></script>
-  <script type="text/javascript" src="map_data_1.js"></script>
+  <script type="text/javascript" src="map_data_10.js"></script>
+  <!-- <script type="text/javascript" src="map_data_1.js"></script>
   <script type="text/javascript" src="map_data_2.js"></script>
   <script type="text/javascript" src="map_data_3.js"></script>
   <script type="text/javascript" src="map_data_4.js"></script>
   <script type="text/javascript" src="map_data_5.js"></script>
   <script type="text/javascript" src="map_data_6.js"></script>
-  <script type="text/javascript" src="map_data_7.js"></script>
-  <script type="text/javascript" src="map_data_8.js"></script>
+  <script type="text/javascript" src="map_data_7.js"></script> -->
+  <!-- <script type="text/javascript" src="map_data_8.js"></script> -->
   <script type="text/javascript">
     function initialize() {
 			$("#ex2").slider({});
@@ -231,14 +232,15 @@
       });
 
       var map_data_wrapper = {
-        "Департамент міського господарства": { data: map_data_1, on: true },
-        "Управління капітального будівництва": { data: map_data_2, on: true },
-        "Управління дорожного господарства": { data: map_data_3, on: true },
-        "Органи місцевого самоврядування": { data: map_data_4, on: true },
-        "Районні адміністрації": { data: map_data_5, on: true },
-        "Департамент освіти": { data: map_data_6, on: true },
-        "Депутатський фонд": { data: map_data_7, on: true },
-        "Не використовується": { data: map_data_8, on: true },
+        // "Департамент міського господарства": { data: map_data_1, on: true },
+        // "Управління капітального будівництва": { data: map_data_2, on: true },
+        // "Управління дорожного господарства": { data: map_data_3, on: true },
+        // "Органи місцевого самоврядування": { data: map_data_4, on: true },
+        // "Районні адміністрації": { data: map_data_5, on: true },
+        // "Департамент освіти": { data: map_data_6, on: true },
+        // "Депутатський фонд": { data: map_data_7, on: true },
+        // "Не використовується": { data: map_data_8, on: true },
+        "Не використовується": { data: map_data_1, on: true },
       };
 
       //var infowindow = new google.maps.InfoWindow({pixelOffset:{height:0}}); // для отображения инфо окна прямо над обьектом при клике на нем
@@ -257,6 +259,7 @@
         this.setPosition = function () {};
         this.open = function () {};
       })();
+
       function prepareInfoWindow(obj) {
         obj.addListener("click", (e) => {
           infowindow.setContent(obj.info);
@@ -296,43 +299,6 @@
           markers.push(marker);
         }
         markerClusterer.addMarkers(layer.markers, true);
-
-        var polylines_data = layer.data.polylines;
-        var polylines = [];
-        layer.polylines = polylines;
-        var count = polylines_data.length;
-        for (var i = 0; i < count; i++) {
-          var polyline_data = polylines_data[i];
-          var polyline = new google.maps.Polyline({
-            path: polyline_data.path,
-            info: polyline_data.info,
-            strokeColor: styles[polyline_data.style_name].polyline_strokeColor,
-            strokeWeight:
-              styles[polyline_data.style_name].polyline_strokeWeight,
-          });
-          prepareInfoWindow(polyline);
-          polylines.push(polyline);
-        }
-        batchSetMap(layer.polylines, map);
-
-        var polygons_data = layer.data.polygons;
-        var polygons = [];
-        layer.polygons = polygons;
-        var count = polygons_data.length;
-        for (var i = 0; i < count; i++) {
-          var polygon_data = polygons_data[i];
-          var polygon = new google.maps.Polygon({
-            paths: polygon_data.paths,
-            info: polygon_data.info,
-            strokeColor: styles[polygon_data.style_name].polygon_strokeColor,
-            strokeWeight: styles[polygon_data.style_name].polygon_strokeWeight,
-            fillColor: styles[polygon_data.style_name].polygon_fillColor,
-            fillOpacity: styles[polygon_data.style_name].polygon_fillOpacity,
-          });
-          prepareInfoWindow(polygon);
-          polygons.push(polygon);
-        }
-        batchSetMap(layer.polygons, map);
       }
 
       function batchSetVisiblity(arr, visiblity) {
@@ -345,8 +311,6 @@
       function redrawMap() {
         for (var layer_name in map_data_wrapper) {
           var layer = map_data_wrapper[layer_name];
-          batchSetVisiblity(layer.polylines, !!layer.on);
-          batchSetVisiblity(layer.polygons, !!layer.on);
           batchSetVisiblity(layer.markers, !!layer.on);
         }
         markerClusterer.repaint();
