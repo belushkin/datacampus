@@ -94,8 +94,7 @@
 				<div class="row mt-3">
 					<b>1 м.</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="1" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>1000 м.</b>
 				</div>
-        <button type="button" class="btn btn-info ml-5 mt-4">Фільтрувати</button>
-        <button type="button" class="btn btn-info ml-5 mt-4" data-toggle="modal" data-target="#exampleModalCenter3">Уточнити адресу майна</button>
+        <button type="button" class="btn btn-info mt-4">Фільтрувати</button>
 			</div>
       <!-- Modal -->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -122,7 +121,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Уточнити адресу</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Уточнити інформацію</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -130,7 +129,7 @@
             <div class="modal-body">
               <form>
                 <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Вкажіть адресу:</label>
+                  <label for="recipient-name" class="col-form-label">Вкажіть інформацію:</label>
                   <input type="text" class="form-control" id="recipient-name">
                 </div>
                 <div class="form-group">
@@ -138,13 +137,14 @@
                   <textarea class="form-control" id="message-text"></textarea>
                 </div>
                 <div class="form-group">
+                  <p>Завантажте фото:</p>
                   <img src="mayno.jpg">
                 </div>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
-              <button type="button" class="btn btn-primary">Уточнити адресу</button>
+              <button type="button" class="btn btn-primary">Уточнити інформацію</button>
             </div>
           </div>
         </div>
@@ -244,7 +244,8 @@
         this.setContent = function (content) {
 					if (content.length > 0) {
 						content += '<button type="button" class="btn btn-success mt-4" data-toggle="modal" data-target="#exampleModalCenter">Подати заявку</button>';
-						content += '<button type="button" class="btn btn-info ml-5 mt-4" data-toggle="modal" data-target="#exampleModalCenter2">Слідкувати за об\'єктом</button>';
+						content += '<button type="button" class="btn btn-info ml-3 mt-4" data-toggle="modal" data-target="#exampleModalCenter2">Слідкувати за об\'єктом</button>';
+            content += '<button type="button" class="btn btn-info ml-3 mt-4" data-toggle="modal" data-target="#exampleModalCenter3">Лишити коментар</button>';
 					}
 
           document.getElementById("clustered-map-inner-info").innerHTML =
