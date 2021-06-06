@@ -207,13 +207,13 @@
     function initialize() {
 			$("#ex2").slider({});
       var center = new google.maps.LatLng(46.4545509, 30.7074861);
-      var view_zone = { north: 48, south: 45.3, west: 29.5, east: 30 };
+      var view_zone = { north: 52, south: 44, west: 22, east: 39 };
       var map = new google.maps.Map(document.getElementById("clustered-map"), {
         zoom: 1,
         center: center,
         mapTypeId: google.maps.MapTypeId.SATELITE,
         mapTypeControl: false,
-        restriction: { latLngBounds: view_zone },
+        restriction: { latLngBounds: view_zone, strictBounds: false },
         styles: [
           {
             featureType: "poi",
