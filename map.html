@@ -212,7 +212,7 @@
         zoom: 1,
         center: center,
         mapTypeId: google.maps.MapTypeId.SATELITE,
-        mapTypeControl: false,
+        mapTypeControl: true,
         restriction: { latLngBounds: view_zone, strictBounds: false },
         styles: [
           {
@@ -222,6 +222,7 @@
           },
         ],
       });
+      map.setZoom(8);
 
       var map_data_wrapper = {
         // "Департамент міського господарства": { data: map_data_1, on: true },
