@@ -63,7 +63,10 @@
 
   <div id="clustered-map"></div>
   <div id="clustered-map-info">
-		<div id="clustered-map-inner-info"></div>
+		<div id="clustered-map-inner-info">
+      <p class="text-secondary">Інформація про об'єкт</p>
+      <img src="mayno.jpg">
+    </div>
 		<div id="clustered-map-inner-filters">
 			
 			<div class="grid">
@@ -215,7 +218,7 @@
       var map = new google.maps.Map(document.getElementById("clustered-map"), {
         zoom: 1,
         center: center,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeId: google.maps.MapTypeId.SATELITE,
         mapTypeControl: false,
         restriction: { latLngBounds: view_zone },
         styles: [
@@ -368,18 +371,18 @@
         map_data_wrapper[target.parentNode.innerText].on = target.checked;
         redrawMap();
       }
-      map.controls[google.maps.ControlPosition.RIGHT_TOP].push(legend);
-      for (var layer_name in map_data_wrapper) {
-        var layer = map_data_wrapper[layer_name];
-        legend.insertAdjacentHTML(
-          "beforeend",
-          "<label><input type='checkbox' " +
-            (layer.on ? "checked" : "") +
-            ">" +
-            layer_name +
-            "</label><br>"
-        );
-      }
+      // map.controls[google.maps.ControlPosition.RIGHT_TOP].push(legend);
+      // for (var layer_name in map_data_wrapper) {
+      //   var layer = map_data_wrapper[layer_name];
+      //   legend.insertAdjacentHTML(
+      //     "beforeend",
+      //     "<label><input type='checkbox' " +
+      //       (layer.on ? "checked" : "") +
+      //       ">" +
+      //       layer_name +
+      //       "</label><br>"
+      //   );
+      // }
       legend.querySelectorAll("input").forEach((elem) => {
         elem.onchange = legendCheckboxChange;
       });
