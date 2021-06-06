@@ -41,7 +41,7 @@
       display: block;
     }
 		#clustered-map-inner-info {
-			height: 100px;
+			height: 70px;
 			margin-left: 2rem;
 		}
 		#clustered-map-inner-filters {
@@ -53,7 +53,12 @@
 		}
 		.row {
 			margin-left: 0;
+      margin-right: 0;
 		}
+    .modal-content {
+      margin-top: 50px;
+      width: 40rem;
+    }
   </style>
 
   <div id="clustered-map"></div>
@@ -90,6 +95,63 @@
 					<b>1 м.</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="1" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>1000 м.</b>
 				</div>
 			</div>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Сформувати заявку на оренду</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <img src="letter.jpg" />
+            </div>
+            <div class="modal-footer">
+              <div>odesa@spfu.gov.ua</div>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+              <button type="button" class="btn btn-primary">Відправити заявку</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Слідкувати за об'єктом</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  Email для запитів: odesa@spfu.gov.ua
+                </div>
+                <div class="form-group">
+                  Telegram канал від Фонду ДержМайна: <a href="#">https://t.me/@FondPropetyBot</a>
+                </div>
+                <div class="form-group">
+                  Телефон: (067) 334 - 34 - 34
+                </div>
+                <div class="form-group">
+                  Статус в системі: <p class="text-success">Опрацьовується</p>
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Відправте запит електроним листом:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+              <button type="button" class="btn btn-primary">Відправити</button>
+            </div>
+          </div>
+        </div>
+      </div>
 		</div>
 	</div>
 
@@ -148,8 +210,8 @@
         // для отображения инфы рядом с картой
         this.setContent = function (content) {
 					if (content.length > 0) {
-						content += '<button type="button" class="btn btn-success mt-4">Подати заявку</button>';
-						content += '<button type="button" class="btn btn-info ml-5 mt-4">Слідкувати за об\'єктом</button>';
+						content += '<button type="button" class="btn btn-success mt-4" data-toggle="modal" data-target="#exampleModalCenter">Подати заявку</button>';
+						content += '<button type="button" class="btn btn-info ml-5 mt-4" data-toggle="modal" data-target="#exampleModalCenter2">Слідкувати за об\'єктом</button>';
 					}
 
           document.getElementById("clustered-map-inner-info").innerHTML =
